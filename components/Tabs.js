@@ -11,6 +11,7 @@ import axios from 'axios'
 //
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
 
+// axios get req
 axios.get("https://lambda-times-api.herokuapp.com/topics")
   .then((response) => {
     response.data.topics.forEach((item) => {
@@ -23,6 +24,7 @@ axios.get("https://lambda-times-api.herokuapp.com/topics")
     console.log(err)
   })
 
+  // component function - tabs
 function tabs(obj) {
   const divTab = document.createElement("div")
   divTab.classList.add("tab")
@@ -31,4 +33,4 @@ function tabs(obj) {
   return divTab
 }
 
-const topics = document.querySelector("div.topics")
+const topics = document.querySelector(".topics") // selecting topics div
