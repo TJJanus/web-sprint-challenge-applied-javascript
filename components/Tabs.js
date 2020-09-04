@@ -11,12 +11,24 @@ import axios from 'axios'
 //
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
 
-const topicsTab = document.querySelector('.topics')
+axios.get("https://lambda-times-api.herokuapp.com/topics")
+  .then((response) => {
+    response.data.topics.forEach((item) => {
+      topics.appendChild(tabs(item))
+    })
 
-axios.get('https://lambda-times-api.herokuapp.com/topics')
-.then(response =>{
-    console.log(response.data.topics)
-    let topicsArr = response.data.topics
-    
-})
+    // console.log(response.data); -- debugg
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
+function tabs(obj) {
+  const divTab = document.createElement("div")
+  divTab.classList.add("tab")
+  divTab.textContent = obj
+
+  return divTab
+}
+
+const topics = document.querySelector("div.topics")
